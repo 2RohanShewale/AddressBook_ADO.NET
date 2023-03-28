@@ -86,5 +86,34 @@ namespace AddressBook_ADO.NET
             }
 
         }
+        public void DeleteContact(string firstName, string lastName)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    SqlCommand sqlCommand = new SqlCommand("SpDeleteByFirstLastName", connection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@FirstName", firstName);
+                    sqlCommand.Parameters.AddWithValue("@LastName", lastName);
+                    int result = sqlCommand.ExecuteNonQuery();
+                    connection.Close();
+                    if (result >= 1)
+                        Console.WriteLine("Contact deleted");
+                    else
+                        Console.WriteLine("Error");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }

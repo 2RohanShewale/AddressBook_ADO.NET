@@ -36,6 +36,9 @@ namespace AddressBook_ADO.NET
                     case 2:
                         adressBook.GetAllContactsFromDatabase();
                         break;
+                    case 3:
+                        adressBook.DeleteContact("Rohan", "Shewale");
+                        break;
                 }
             }
             adressBook.AddNewContactInDataBase(contact);
