@@ -1,0 +1,4 @@
+﻿CREATE PROCEDURE SpGetAllData
+AS BEGIN
+SELECT * FROM Contacts
+END

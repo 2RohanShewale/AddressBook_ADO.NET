@@ -14,7 +14,7 @@ namespace AddressBook_ADO.NET
         public string City { get; set; }
         public string State { get; set; }
         public int Zip { get; set; }
-        public long PhoneNUmber { get; set; }
+        public long PhoneNumber { get; set; }
         public string Email { get; set; }
     }
 }
