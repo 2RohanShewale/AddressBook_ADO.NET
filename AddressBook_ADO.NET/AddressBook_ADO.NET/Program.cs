@@ -21,11 +21,16 @@ namespace AddressBook_ADO.NET
                 PhoneNumber = 9221581780,
                 Email = "rohan@gmail.com"
             };
+            Contact updateContact = new Contact()
+            {
+                FirstName = "Abhijeet",
+                LastName = contact.LastName
+            };
             AdressBook adressBook = new AdressBook();
   
             while (true)
             {
-                Console.Write("1.Add Contact\n2.Get Contacts\nEnter a choice: ");
+                Console.Write("1.Add Contact\n2.Get Contacts\n3.Delete contact\n4.UpdateContact\nEnter a choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -38,6 +43,9 @@ namespace AddressBook_ADO.NET
                         break;
                     case 3:
                         adressBook.DeleteContact("Rohan", "Shewale");
+                        break;
+                    case 4:
+                        adressBook.UpdateContact(updateContact);
                         break;
                 }
             }

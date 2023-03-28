@@ -115,5 +115,34 @@ namespace AddressBook_ADO.NET
 
 
         }
+        public void UpdateContact(Contact contact)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    SqlCommand sqlCommand = new SqlCommand("SpUpdateContact", connection);
+                    sqlCommand.CommandType = CommandType.StoredProcedure;
+                    sqlCommand.Parameters.AddWithValue("@FirstName", contact.FirstName);
+                    sqlCommand.Parameters.AddWithValue("@LastName", contact.LastName);
+                    int result = sqlCommand.ExecuteNonQuery();
+                    connection.Close();
+                    if (result >= 1)
+                        Console.WriteLine("Update Contact");
+                    else
+                        Console.WriteLine("Error");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+        }
     }
 }
